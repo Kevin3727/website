@@ -50,7 +50,7 @@
                                     <p>IceCube detects billions of events each year. But majority of these events are down-going atmospheric
                                     muons. In the sterile neutrino analysis we are interested in up-going atmospheric neutrinos to see the matter effect. This event selection is based on many cuts and reconstructions including machine learning.</p>
                                     
-                                    <center><img src="images/starting_IC.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/starting_IC.png" alt="starting IC" width="500"/>
                                     <div>Starting event (left) and through-going event (right)</div>
                                     </center>
                                     
@@ -99,19 +99,19 @@
                                     <br>    
                                     For each event 10 variables are fed to the machine. Some of these variables can determine the quality of reconstructions, such as “log likelihood”, “reduced log likelihood” and “corrected paraboloid sigma”. Some are associated to the amount charge in the detector. The length of track, as well as skewness of the direct hits are also used as input variable of the machine. And finally the zenith angle which the particle entered the detector do have high correlation with the type of events. figure below shows the correlation between each two variables (well over 0.9) that was used for training. Although having very strong correlation between two variables may not negatively effect the result of the training but by removing one of them the outcome will not change. The strongest correlation between these ten variables are 0.77.</p>
                                         
-                                    <center><img src="images/correlation_matrix.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/correlation_matrix.png" alt="Correlation Matrix" width="500"/>
                                     <div>Correlation between each two variables that are used for machine learning are shown in this plot.</div>
                                     </center>
                                     <br>
                                     <p>In this two-class AdaBoost a decision function between 1 (certainly atmospheric neutrino) and −1 (certainly atmospheric muon background) is given to each event. Cut based of the decision function can determine the purity of the final selection. Figure below shows the distribution of atmospheric neutrinos and muons. By choosing the event with decision function of more than 0.343, we can guarantee that there are less than 1 percent background in the final sample.</p>
                                     
-                                    <center><img src="images/DecisionFunction-withLine.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/DecisionFunction-withLine.png" alt="DecisionFunction" width="500"/>
                                     <div>“Decision Function” histogram show the distribution of atmospheric neutrinos (NuGen simulation) and atmospheric muons (CORSIKA simulation) for 1 year of data. The red line show the cut which the events are classified in this analysis. Events on the right side of the red line are kept.</div></center>
                                     <br>
                                     <p>Overtraining (or overfitting) is fitting the trained data to noise in the sample. If overtraining occurs, simulation and data result will not agree with each other. One of the easiest ways to look for any overtraining is to keep a portion of our sample as a testing sample (which the machine has not been trained on) and compare them to the trained sample. Since these two sampled are randomly selected from the same events, they must agree with each other. As mentioned above, we have kept 10% of the event for test. Zenith angle and neutrino energy distributions (which are the variables important for the sterile analysis) for both trained and test sample are shown in figures below Their agreement within their statistical limits indicated lack of overtraining. Distribution for 9 other variables which were used in AdaBoost, agree with the test sample.</p>
                                     
-                                    <center><img src="images/PrimaryEnergyTestTrainComparisionCombined.png" alt="Neutral Current Rate" width="500"/>
-                                    <img src="images/Zenith_testTrainComparision_combined.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/PrimaryEnergyTestTrainComparisionCombined.png" alt="Primary Energy Test/Train Comparision" width="500"/>
+                                    <img src="images/Zenith_testTrainComparision_combined.png" alt="Zenith test/Train Comparision" width="500"/>
                                     <div>Comparison of distribution of trained and test samples are shown here. Agreement of both sample indicated lack of overtraining.</div></center>
                                     
                                     
@@ -123,7 +123,7 @@
                                     Since neutrino disappearance depends on zenith angle (baseline) and neutrino energy, precisions in which we reconstruct these two properties have direct effect in the sensitivity of the analysis to muon neutrino disappearance neutrinos and consequently to sterile neutrinos. After neutrino interaction a portion of its energy will be release at the in interaction vertex (“cascade energy”); The rest of the energy will be stored in the outgoing muon track. In general starting events have a much better energy resolution than through-going events and there are three factors for this.First, the ratio of cascade to muon energy is not constant (see Figure below); Therefore for through-going events, which the cascade is outside of the detector, there will be an uncertainty in the primary neutrino energy if only a muon can be detected. Second, the IceCube cannot determine the interaction vertex locations, if it was outside of the detector, and since muonlooses energy as it travels through ice, the through-going muon that reaches the detector has an unknown amount less energy than the its energy at the vertex. And finally, at these energies (∼ T eV ) length of muons are about a few kilometers (from creation to decay), therefore part of the muons are not in the kilometer-cubed detector, and given the randomness of stochastically losses of energy (which will be detected), there will be large uncertainties on energy reconstruction results.
                                     </p>
                                     
-                                    <center><img src="images/CascadeEnergyRatio.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/CascadeEnergyRatio.png" alt="Cascade Energy Ratio" width="500"/>
                                     <div>Histogram show the ratio of cascade to muon energy for high energy neutrinos in ice. Vertical axis has an arbitrary unit.</div></center>
                                     <br>
                                     <p>Having a good energy resolution is a huge advantage in this analysis, so it makes sense that we work with starting events for the analysis. However, we are not going to throw away through-going muons since they still contain some information about the sterile neutrinos, but we are going to separate them from the starting events and fit our hypothesis on both sets of event simultaneously.</p>

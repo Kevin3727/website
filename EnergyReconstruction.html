@@ -55,7 +55,7 @@
                                     where a(E) is the ionization energy loss and b(E) is the sum of e<sup>+</sup> e<sup>-</sup> pair production, bremsstrahlung and photonuclear contributions. The rates are shown in figure below.
                                     </p>
                                     
-                                    <center><img src="images/rpp_mu_E_loss_02.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/rpp_mu_E_loss_02.png" alt="rpp_mu_E_loss" width="500"/>
                                     <div>The average energy loss of muon in different elements as a function of muon energy.</div></center>
                                     <br>
                                     <p>Each event will be divided into segments and for each segment dE/dx will be estimated using “millipede” software. For this analysis we divide the event at each 10 m. Since Cherenkov light travel at an angle from the track before illuminating the DOMs, estimated energy losses along the track for through-going track are usually fall outside of the detector volume. Therefore, if the first energy loss of the event is outside or very close to borders of detector, event is marked as through-going and the first energy loss along the track falls within the detector volume event will be marked as starting.
@@ -67,23 +67,23 @@
                                     I have tried to reconstruct the energy of neutrinos from starting tracks in two different ways. First is using an AdaBoost regressor. Inputs for this regressor are cascade energy from millipede (explained above), dE/dx of the track using millipede losses, as well as the track length (from the cascade vertex to the border of the detector where the muon exits), and accumulated muon energy along the track as a function of percentile of track length (100 variables as shown in figure below).
                                     </p>
                                     
-                                    <center><img src="images/accumulated_muon_energy.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/accumulated_muon_energy.png" alt="accumulated muon energy" width="500"/>
                                     <div>Accumulated energy of muons along their track as a function of normalized track length, for several sample simulation tracks are shown. This information is used for neutrino energy reconstruction using AdaBoost regressor.</div></center>
                                     <br>
                                     <p>The second method is by unfolding muon energy from dE/dx calculated from millipede losses and add them to the cascade energy. Since the reconstructed cascade energy is a good representation of cascade energy, there is no need for unfolding; However muon energies in IceCube are usually are analytically calculated from above equation and represent an energy proxy rather than muons’ actual energy. After unfolding, muon and cascade energies can be added together, since now they have the same unit (GeV). Figure below show two dimensional histogram of reconstructed neutrino energy obtained by the unfolding method as a function of true neutrino energy.
                                     </p>
                                     
-                                    <center><img src="images/nu_energy_reconstruction.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/nu_energy_reconstruction.png" alt="nu energy reconstruction" width="500"/>
                                     <div>This plot shows the two dimensional histogram of reconstructed neutrino energy obtained by the unfolding method as a function of true neutrino energy from the simulation. The bins in this plot are vertically normalized and the color scale is linear.</div></center>
                                     <br>
                                     <p>Figures below compares energy resolution of these two neutrino reconstruction methods. Both methods show a large improvement in the energy resolution in neutrinos compared to muon energy resolution which is about 0.4 for starting muons (this will be much larger for through going muons, since those muons loose unknown amount of energy before they reach the detector). As it is shown in the figure, unfolding method has a better resolution in almost all neutrino energies compared to the AdaBoost method. Even though, AdaBoost has a better resolution for higher reconstructed energies, it is important to keep in mind that most of the events are around 1 T eV . We have also shown that unfolding method gives a better sensitivity for the final analysis. And unfolding method is used from here on.
                                     </p>
                                     
-                                    <center><img src="images/energy_resolution_trueNu_st.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/energy_resolution_trueNu_st.png" alt="energy_resolution_trueNu_st" width="500"/>
                                     <div>This plot compares the energy resolution of starting events for different neutrino reconstruction methods as a function of true neutrino energy.</div></center>
                                     <br>
-                                    <center><img src="images/energy_resolution_trueNu.png" alt="Neutral Current Rate" width="500"/>
-                                    <img src="images/energy_resolution_recNu.png" alt="Neutral Current Rate" width="500"/>
+                                    <center><img src="images/energy_resolution_trueNu.png" alt="energy_resolution_trueNu" width="500"/>
+                                    <img src="images/energy_resolution_recNu.png" alt="energy_resolution_recNu" width="500"/>
                                     <div>These plots show the energy resolution for two different selections starting sample with 90 and 99 percent starting track purity, L5st90 and L5st99 for two different methods of neutrino energy reconstructions. The peak in left hand side of ‘L5st99 Unfolding’ is due to the fact that there are very few events at those energies in that sample. The difference in these plots with Figure above is that all events in sample are included i.e. the impurity of the starting sample (through-going events in the sample). First plot shows the resolution as the function of true neutrino energy and sencond figure show the resolution as a function of reconstructed energy (for the specific method used).</div></center>
                                                                     
                                     
