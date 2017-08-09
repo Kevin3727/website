@@ -5,6 +5,12 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script> 
+    $(function(){
+      $("#footer").load("footer.html"); 
+    });
+    </script>
 	<head>
 		<title>Eclipse Timer - Kevin Ghorbani Personal Page</title>
 		<meta charset="utf-8" />
@@ -18,11 +24,10 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-                            
+                                                    
 							<!-- Header -->
 								<header id="header">
 									<a href="index.html" class="logo"><strong>Personal Page</strong> of Kevin Ghorbani</a>
@@ -42,12 +47,13 @@
                             <br><br>
                             Internect connection is needed for gathering the eclipse information of your location by entering US city/town or by latitude and longitude (data will be gathered from the <a href="http://aa.usno.navy.mil">Astronomical Applications Department</a> of the <a href="http://www.usno.navy.mil/astronomy">U.S. Naval Observatory</a>). You may save the information so you don't have to have internet connection at the day of the eclipse.
                             <br><br>
-                            Remember to sync your computer clock for accuracy. Time zone does not affect the coutdown since all times are in UTC. However the local time shown is based on your computer timezone.
+                            Remember to sync your computer clock for accuracy. Time zone does not affect the coutdown since all times are in UTC. However the local time shown is based on your computer timezone.</p>
                             <br><br>
                                 
                             <h3>Run:</h3>
-                            [Optional] Start the program by enabling the internal speaker:
-                            <br>(Skip if no totality)</p>
+                            <p>[Optional] Start the program by enabling the internal speaker:
+                            <br>
+                            (Skip if no totality) </p>
                             <div class="codebox">
                                 <code>   
                                     sudo modprobe pcspkr
@@ -119,58 +125,7 @@
 						</div>
 					</div>
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-                                        <li><a href="CV.html">Curriculum vitae</a></li>
-										<li><a href="EventSelection.html">Event Selection</a></li>
-                                        <li><a href="EnergyReconstruction.html">Energy Reconstruction</a></li>
-										<li><a href="StartingVeto.html">Starting Track Veto</a></li>
-										<li>
-											<span class="opener">Other Projects</span>
-											<ul>
-												<li><a href="chicago.html">Chicago Crime Analysis</a></li>
-												<li><a href="polling.html">Polling Module</a></li>
-												<li><a href="eclipsetimer.html">Eclipse Timer</a></li>
-											</ul>
-										</li>
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<ul class="contact">
-										<li class="fa-envelope-o"><a href="#">kevin at icecube dot wisc dot edu</a></li>
-										<li class="fa-home">222 W Washington Ave Ste 500<br />
-										Madison, WI 53703</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; 2017 Kevin Ghorbani. All rights reserved.</p>
-								</footer>
-
-						</div>
-					</div>
+				<div id="footer"></div>
 
 			</div>
 
