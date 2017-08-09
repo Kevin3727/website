@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Event Selection - Kevin Ghorbani Personal Page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Personal Page</strong> of Kevin Ghorbani</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/kevghor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/Kevin3727" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://github.com/Kevin3727/" class="icon fa-github"><span class="label">Snapchat</span></a></li>
+										<li><a href="https://www.instagram.com/kevinghor/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Event Selection</h1>
+									</header>
+
+									<span class="image main"><img src="images/icl_moonlight.jpg" alt="" /></span>
+                                    
+                                    <p>My filtering has 3 different levels processed from level 2 (official IceCube processing) some of the codes are available <a href="https://github.com/Kevin3727/IC-scripts">here</a>.</p>
+                                    
+                                    <hr class="major" />
+                                    
+                                    <p>IceCube detects billions of events each year. But majority of these events are down-going atmospheric
+                                    muons. In the sterile neutrino analysis we are interested in up-going atmospheric neutrinos to see the matter effect. This event selection is based on many cuts and reconstructions including machine learning.</p>
+                                    
+                                    <center><img src="images/starting_IC.png" alt="Neutral Current Rate" width="500"/>
+                                    <div>Starting event (left) and through-going event (right)</div>
+                                    </center>
+                                    
+                                    
+                                    <hr class="major" />
+
+									<h2>Online Filters</h2>
+                                    <p>After events triggered the detector, “Processing and Filtering” (PnF) will be performed almost simultaneously at the South Pole. Each event will go through sets of reconstructions. These reconstructions are usually simpler and faster at level 1 (which happens at the pole) compared to the ones that are performed at higher levels which happen later either in Madison (level 2) or analysis level. Each event may be selected to pass sets of predefined filters such as “Muon Filter” which selects events that look like muon tracks. In addition there are sets of unconventional filters such as “MinBias” which select random events regardless of any reconstructions mainly for calibration purposes. If an event has passed any of these filters, that event will be selected to be transfered to the North via satellite transmission.
+                                    <br>    
+                                    In this analysis, all event that passed any of conventional filters at level 2 will be selected for further analysis.</p>
+                                    
+                                    <hr class="major" />
+
+									<h2>Coincident Event Splitting</h2>
+                                    <p>Given that the events readout time in the detector is 10 μs and the trigger rate is about 3 kHz, it is obvious that there will be many overlapping event. Also, other factors such as excess of deposited charge in the detector due to existence of multiple events raises the chance of coincident event pass the filters compared to single events, which raises this probability to about 10% of all events.
+                                    <br>    
+                                    In order to have an accurate event reconstruction, we need to split these outputs into multiple events. “Topological Splitter” is one of the module that will do this splitting. The concept of topological splitter is based on the fact that photons detected by the photo-multipliers are Cherenkov lights traveling11 with the speed of c/n (where ‘c’ is the speed of light and ‘n’ is the index of refraction in ice) emitted by the muon traveling at the speed of light (c). Ergo most of the photon coming from a single muon event have time-like spacetime separation from photon coming from a different muon.
+                                    <br>
+                                    Of course, this method has its own limitations in reality. For example, noise in the detector can mislead the splitter, so splitting should be perform on clean pulses (which most of the noise has already been removed). In this analysis, we will keep and add the noise to our pulses after splitting since in one of our event reconstructions, noise will be needed.</p>
+                                    
+                                    <hr class="major" />
+
+									<h2>Directional Selection</h2>
+                                    <p>Median range of muon in ice is about 3 km for 1 T eV muons (and about 20 km for high energy 1P eV muon). Therefore, one of the best ways to eliminate atmospheric muon background is by selecting only up-going muons in the detector. This will assure us that those events where atmospheric neutrinos which traveled through the earth and interacted near or at the detector.
+                                    <br>    
+                                    Single muon tracks in IceCube have an average directional resolution of less than 1 degree. We are only interested in the event with zenith angles of more than π/2 (i.e. up-going events). But this is not enough to make sure there are no down-going atmospheric muons in the sample which is mis-reconstructed as an up-going event. Mis-reconstructions can happen due to many factors including not having enough hits, timely noise or coincident and timely events that failed to be split in the previous process. In fact, by only cutting on zenith angle, there are more than two orders of magnitude more atmospheric –mis-reconstructed–muons in the sample than neutrinos. It is obvious that event that have deposited less energy in the detector are more likely to be reconstructed. Therefore, in this selection we cut out all the event that hit 15 or less DOMs.
+                                    <br>    
+                                    In addition, variable called ‘paraboloid sigma’ describes the shape of likelihood space around the maximum point to estimate the statistical uncertainty on the location if that point, and ‘reduced log likelihood’ tries to describe how good the directional fit is. These variables will be used later in machine learning, but at this point, very poor reconstructed events with a large ‘reduced log likelihood’ will be cut out of the sample.</p>
+                                    
+                                    <hr class="major" />
+
+									<h2>Neutral Current Events</h2>
+                                    <p>There are mainly two types of neutral-current event observable by IceCube, neutral current neutrino muons and neutrno electrons. From the detectors point of view these event are indistinguishable and will gives a very bad directional reconstruction due to their spherical shape (they have resolution of about 10 degrees). It will be to our advantage in the analysis to cut out all the neutral-current events.
+                                    <br>
+                                    Although, selecting pure neutral-current sample may not be trivial in practice (some charged-current starting event cascades can resemble neutral current) but cutting them out is fairly easy. We can define a track length for each event by looking at its direct hits based on its directional reconstruction, known as ‘LDir’. Neutral-currents have a very short track length (tens of meters in reality) as shown in figure below. By cutting, out short events (LDir &lt; 200m), we can guarantee  that the rate of ν e will be about 0.2% of all event in the final sample. ν<sub>μ</sub>−NC is expected to have the similar rate at the final level. In addition, as it is shown in figure below, a large number of atmospheric neutrinos have direct length of less than 200 m and will be cut out at this level. Cutting out short ν<sub>μ</sub>−CC events are not necessarily a bad thing for the analysis, since shorter events have worse energy reconstructions and will reduce the sample’s energy resolution.</p>
+                                    
+                                    <center><img src="images/LDir_cut.png" alt="Neutral Current Rate" width="750"/>
+                                    <div>Histogram of ‘LDir’ in meters is shown for three different events. Blue line shows muon neutrino events and green shows electron neutrino events and red shows atmospheric muon events.</div>
+                                    </center>
+                                    
+                                    
+                                    <hr class="major" />
+
+									<h2>Machine Learning</h2>
+                                    <p>The main cut for selecting background from neutrino data is being done using machine learning algorithms. After testing many different algorithms, supervised <a href="https://en.wikipedia.org/wiki/AdaBoost">AdaBoost</a> showed the best result for classifying these events. For training about 40 days of atmospheric muon simulation livetime used as background and 2 years of atmospheric muon simulation used as foreground. 90% of these simulation event were randomly selected to be used for training the machine and the rest (10%) were used for testing the result.
+                                    <br>    
+                                    For each event 10 variables are fed to the machine. Some of these variables can determine the quality of reconstructions, such as “log likelihood”, “reduced log likelihood” and “corrected paraboloid sigma”. Some are associated to the amount charge in the detector. The length of track, as well as skewness of the direct hits are also used as input variable of the machine. And finally the zenith angle which the particle entered the detector do have high correlation with the type of events. figure below shows the correlation between each two variables (well over 0.9) that was used for training. Although having very strong correlation between two variables may not negatively effect the result of the training but by removing one of them the outcome will not change. The strongest correlation between these ten variables are 0.77.</p>
+                                        
+                                    <center><img src="images/correlation_matrix.png" alt="Neutral Current Rate" width="500"/>
+                                    <div>Correlation between each two variables that are used for machine learning are shown in this plot.</div>
+                                    </center>
+                                    <br>
+                                    <p>In this two-class AdaBoost a decision function between 1 (certainly atmospheric neutrino) and −1 (certainly atmospheric muon background) is given to each event. Cut based of the decision function can determine the purity of the final selection. Figure below shows the distribution of atmospheric neutrinos and muons. By choosing the event with decision function of more than 0.343, we can guarantee that there are less than 1 percent background in the final sample.</p>
+                                    
+                                    <center><img src="images/DecisionFunction-withLine.png" alt="Neutral Current Rate" width="500"/>
+                                    <div>“Decision Function” histogram show the distribution of atmospheric neutrinos (NuGen simulation) and atmospheric muons (CORSIKA simulation) for 1 year of data. The red line show the cut which the events are classified in this analysis. Events on the right side of the red line are kept.</div></center>
+                                    <br>
+                                    <p>Overtraining (or overfitting) is fitting the trained data to noise in the sample. If overtraining occurs, simulation and data result will not agree with each other. One of the easiest ways to look for any overtraining is to keep a portion of our sample as a testing sample (which the machine has not been trained on) and compare them to the trained sample. Since these two sampled are randomly selected from the same events, they must agree with each other. As mentioned above, we have kept 10% of the event for test. Zenith angle and neutrino energy distributions (which are the variables important for the sterile analysis) for both trained and test sample are shown in figures below Their agreement within their statistical limits indicated lack of overtraining. Distribution for 9 other variables which were used in AdaBoost, agree with the test sample.</p>
+                                    
+                                    <center><img src="images/PrimaryEnergyTestTrainComparisionCombined.png" alt="Neutral Current Rate" width="500"/>
+                                    <img src="images/Zenith_testTrainComparision_combined.png" alt="Neutral Current Rate" width="500"/>
+                                    <div>Comparison of distribution of trained and test samples are shown here. Agreement of both sample indicated lack of overtraining.</div></center>
+                                    
+                                    
+                                    <hr class="major" />
+
+									<h2>Starting Events</h2>
+                                    <p>At this point, events in the sample are up-going atmospheric neutrinos that pass through the detector, which include neutrinos that interact inside the detector volume (“starting events”) with an outgoing muon track and neutrinos that interacted outside of the detector volume and only the outgoing muon track will reach the detector (“through-going events”). In the previous sterile analyses (<a href="http://dx.doi.org/10.1103/PhysRevLett.117.071801">10.1103/PhysRevLett.117.071801 </a>) mix of both types of events have been used. In this analysis, we are going to attempt to separate these two types of events.
+                                    <br>    
+                                    Since neutrino disappearance depends on zenith angle (baseline) and neutrino energy, precisions in which we reconstruct these two properties have direct effect in the sensitivity of the analysis to muon neutrino disappearance neutrinos and consequently to sterile neutrinos. After neutrino interaction a portion of its energy will be release at the in interaction vertex (“cascade energy”); The rest of the energy will be stored in the outgoing muon track. In general starting events have a much better energy resolution than through-going events and there are three factors for this.First, the ratio of cascade to muon energy is not constant (see Figure below); Therefore for through-going events, which the cascade is outside of the detector, there will be an uncertainty in the primary neutrino energy if only a muon can be detected. Second, the IceCube cannot determine the interaction vertex locations, if it was outside of the detector, and since muonlooses energy as it travels through ice, the through-going muon that reaches the detector has an unknown amount less energy than the its energy at the vertex. And finally, at these energies (∼ T eV ) length of muons are about a few kilometers (from creation to decay), therefore part of the muons are not in the kilometer-cubed detector, and given the randomness of stochastically losses of energy (which will be detected), there will be large uncertainties on energy reconstruction results.
+                                    </p>
+                                    
+                                    <center><img src="images/CascadeEnergyRatio.png" alt="Neutral Current Rate" width="500"/>
+                                    <div>Histogram show the ratio of cascade to muon energy for high energy neutrinos in ice. Vertical axis has an arbitrary unit.</div></center>
+                                    <br>
+                                    <p>Having a good energy resolution is a huge advantage in this analysis, so it makes sense that we work with starting events for the analysis. However, we are not going to throw away through-going muons since they still contain some information about the sterile neutrinos, but we are going to separate them from the starting events and fit our hypothesis on both sets of event simultaneously.</p>
+                                    <p>For detailed analysis starting track selection see my <a href="https://github.com/Kevin3727/IC-scripts">GitHub page</a>.
+                                    
+                                    <hr class="major" />
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+                                        <li><a href="CV.html">Curriculum vitae</a></li>
+										<li><a href="EventSelection.html">Event Selection</a></li>
+                                        <li><a href="EnergyReconstruction.html">Energy Reconstruction</a></li>
+										<li><a href="StartingVeto.html">Starting Track Veto</a></li>
+										<li>
+											<span class="opener">Other Projects</span>
+											<ul>
+												<li><a href="chicago.html">Chicago Crime Analysis</a></li>
+												<li><a href="polling.html">Polling Module</a></li>
+												<li><a href="eclipsetimer.html">Eclipse Timer</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<ul class="contact">
+										<li class="fa-envelope-o"><a href="#">kevin at icecube dot wisc dot edu</a></li>
+										<li class="fa-home">222 W Washington Ave Ste 500<br />
+										Madison, WI 53703</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2017 Kevin Ghorbani. All rights reserved.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

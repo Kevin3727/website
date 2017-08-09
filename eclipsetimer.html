@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Eclipse Timer - Kevin Ghorbani Personal Page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+                            
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Personal Page</strong> of Kevin Ghorbani</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/kevghor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/Kevin3727" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://github.com/Kevin3727/" class="icon fa-github"><span class="label">Snapchat</span></a></li>
+										<li><a href="https://www.instagram.com/kevinghor/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+									</ul>
+								</header>
+                            <br>
+                            <h1>Eclipse Timer</h1>
+                            
+                            <p>To get the software click <a href="https://github.com/Kevin3727/eclipseTimer">here</a>.</p>
+                            
+                            <p>This timer beeps (through system sound not from the speakers) near the 2nd and 3rd connections (if there is totality at your location). It allows you to concentrate on your tasks during totlality without havinf to look at the time.
+                            <br><br>
+                            Internect connection is needed for gathering the eclipse information of your location by entering US city/town or by latitude and longitude (data will be gathered from the <a href="http://aa.usno.navy.mil">Astronomical Applications Department</a> of the <a href="http://www.usno.navy.mil/astronomy">U.S. Naval Observatory</a>). You may save the information so you don't have to have internet connection at the day of the eclipse.
+                            <br><br>
+                            Remember to sync your computer clock for accuracy. Time zone does not affect the coutdown since all times are in UTC. However the local time shown is based on your computer timezone.
+                            <br><br>
+                                
+                            <h3>Run:</h3>
+                            [Optional] Start the program by enabling the internal speaker:
+                            <br>(Skip if no totality)</p>
+                            <div class="codebox">
+                                <code>   
+                                    sudo modprobe pcspkr
+                                </code>
+                            </div>
+                            <br>
+                            <p>and then run the main code:</p>
+                            <div class="codebox">
+                                <code>   
+                                    python3 ./eclipseTimer.py
+                                </code>
+                            </div>
+                            <br>
+                            <p>This is an example screen when you start the program:</p>
+                            <center><img src="images/EclipseTimer0.png" alt="EclipseTimer" width="500"/>
+                            </center>
+                            
+                            <br>
+                            <p>This is the screen after it started running:</p>
+                            <center><img src="images/EclipseTimer1.png" alt="EclipseTimer" width="500"/>
+                            </center>
+                            <br>
+                        
+                            <h3>Beeping</h3>
+                            <p>If beeping activated (see Run), the programs start beeping (throgh the pc internal speaker) before the start and before the end of totality at intervals shown bellow [minute:second]:
+                            <br><br>
+                            5:00 single beep<br>
+                            4:00 single beep<br>
+                            3:00 single beep<br>
+                            2:00 double beep<br>
+                            1:30 single beep<br>
+                            1:00 triple beep<br>
+                            0:50 single beep<br>
+                            0:40 single beep<br>
+                            0:30 triple beep<br>
+                            0:25 single beep<br>
+                            0:20 double beep<br>
+                            0:15 single beep<br>
+                            0:10 double beep<br>
+                            0:09 single beep<br>
+                            0:08 single beep<br>
+                            0:07 single beep<br>
+                            0:06 single beep<br>
+                            0:05 double beep<br>
+                            0:04 single beep<br>
+                            0:03 single beep<br>
+                            0:02 single beep<br>
+                            0:01 single beep<br>
+                            0:00 Long beep</p>
+                            
+                            <br>
+                            <h3>Download Software</h3>
+                            <a href="https://github.com/Kevin3727/eclipseTimer">https://github.com/Kevin3727/eclipseTimer</a>
+                            <br><br>
+                        
+                            <h3>Eclipse Map</h3>
+                            <p><a href="http://www.eclipsewise.com/solar/SEnews/TSE2017/TSE2017gmap/TSE2017gmapSC.html">Inreractive Map</a></p>
+                            <center><img src="images/eclipse-us.jpg" alt="Eclipse Map" width="90%"/>
+                            </center>
+                            <br><br>
+                        
+                            <h3>More Information</h3>
+                            <a href="http://www.eclipse2017.org">eclipse2017.org</a>
+                            <br>    
+                            <a href="https://eclipse2017.nasa.gov">eclipse2017.nasa.gov</a>
+
+                            <hr class="major" />
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+                                        <li><a href="CV.html">Curriculum vitae</a></li>
+										<li><a href="EventSelection.html">Event Selection</a></li>
+                                        <li><a href="EnergyReconstruction.html">Energy Reconstruction</a></li>
+										<li><a href="StartingVeto.html">Starting Track Veto</a></li>
+										<li>
+											<span class="opener">Other Projects</span>
+											<ul>
+												<li><a href="chicago.html">Chicago Crime Analysis</a></li>
+												<li><a href="polling.html">Polling Module</a></li>
+												<li><a href="eclipsetimer.html">Eclipse Timer</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<ul class="contact">
+										<li class="fa-envelope-o"><a href="#">kevin at icecube dot wisc dot edu</a></li>
+										<li class="fa-home">222 W Washington Ave Ste 500<br />
+										Madison, WI 53703</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2017 Kevin Ghorbani. All rights reserved.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

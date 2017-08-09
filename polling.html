@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Polling Module - Kevin Ghorbani Personal Page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+                            
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Personal Page</strong> of Kevin Ghorbani</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/kevghor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/Kevin3727" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://github.com/Kevin3727/" class="icon fa-github"><span class="label">Snapchat</span></a></li>
+										<li><a href="https://www.instagram.com/kevinghor/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+									</ul>
+								</header>
+                            <br>
+                            <h1>Polling Module</h1>
+                            <p><b>Disclaimer:</b> This software is an open source software created for educational purposes. Creator is not resposible  for any hacking and/or poll manipulations.</p>
+                            <hr class="major" />
+                            
+                            <p>To get the software click <a href="https://github.com/Kevin3727/polling_module">here</a>.</p>
+                            <h2>What does it do</h2>
+                            <p>This program is an anonymous auditable polling/voting software. A good polling system must satisfy four properties:</p>
+                            <h5>Anonymous</h5>
+                            <p>Users' votes must be hidden from everyone including the admin of the program.</p>
+                            
+                            <h5>Auditable</h5>
+                            <p>Users must be able to verify their own votes also should have access to the metadata to all the votes.</p>
+                            
+                            <h5>Non-Transferable</h5>
+                            <p>Users should not be able to sell their votes i.e. there should not be a proof that a user voted for a specific person or subject.</p>
+                            
+                            <h5>Open Source</h5>
+                            <p>Everything should be open sourced, so no one person (group) can manipulate the results.</p>
+                            
+                            <h2>Definitions</h2>
+                            <p><b>Admin:</b> can add or remove users, reset users' passwords, create polls, and close polls, but cannot vote as admin (admin may create their own user in order to vote).<br>
+                            <b>User:</b> can vote, view result of the closed polls or the polls they have already voted on, and change their own password.<br><br>
+                            
+                            <b>Public information:</b> Users who have voted (after the poll is closed) and eligible user who have not voted (for shaming purposes), votes' hash and their votes and of course the result of the poll.
+                            </p>
+                            
+                            <h2>How it works</h2>
+                            <p>Most of the data are save in a SQL file which includes usernames, their hashed (sha512) temporary password (which will be give to admin and can be sent to the users via email), users' new hashed passwords, password change indentifier (users cannot vote if they have not change their temporary password), and their emails as well as all poll information.
+                            <br><br>
+                            After users have voted, they will be given a unique (randomly generated) number as receit of the vote. This number and who/what they have voted for will be immediately available (to users who have voted and to all users after poll's closed). Since this is random/hashed number it will NOT be tracable to the specific user but it can be used by the users to verify their own votes.
+                            <br><br>
+                            After the poll's closed list of the users who have voted will also be available so it can be verfied that no extra votes has been casted.
+                            </p>
+                            
+                            <br>
+                            <h2>Flask Version</h2>
+                            <p>The new version of the program can be run on the web using <a href="http://flask.pocoo.org/">flask</a>. This is more secure than the terminal veriosn. However at the moment the voting part is not included in the program.
+                            <br><br>
+                            Some screen shots:
+                            </p>
+                            
+                            <center><img src="images/flask_poll_0.png" alt="pollingModule flask" width="500"/>
+                            <div>Login page</div>
+                            </center>
+                            <br>
+                            <center><img src="images/flask_poll_1.png" alt="pollingModule flask" width="400"/>
+                            <div>Admin page</div>
+                            </center>
+                            <br>
+                            <center><img src="images/flask_poll_2.png" alt="pollingModule flask" width="500"/>
+                            <div>Registering user manually or by uploading CSV file (available to admin only)</div>
+                            </center>
+                            <br>
+                            <center><img src="images/flask_poll_3.png" alt="pollingModule flask" width="600"/>
+                            <div>List of users (available to admin only)</div>
+                            </center>
+                            
+                            <br>
+                            <h2>Download</h2>
+                            <a href="https://github.com/Kevin3727/polling_module">github.com/Kevin3727/polling_module</a>
+
+                            <hr class="major" />
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+                                        <li><a href="CV.html">Curriculum vitae</a></li>
+										<li><a href="EventSelection.html">Event Selection</a></li>
+                                        <li><a href="EnergyReconstruction.html">Energy Reconstruction</a></li>
+										<li><a href="StartingVeto.html">Starting Track Veto</a></li>
+										<li>
+											<span class="opener">Other Projects</span>
+											<ul>
+												<li><a href="chicago.html">Chicago Crime Analysis</a></li>
+												<li><a href="polling.html">Polling Module</a></li>
+												<li><a href="eclipsetimer.html">Eclipse Timer</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<ul class="contact">
+										<li class="fa-envelope-o"><a href="#">kevin at icecube dot wisc dot edu</a></li>
+										<li class="fa-home">222 W Washington Ave Ste 500<br />
+										Madison, WI 53703</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2017 Kevin Ghorbani. All rights reserved.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
