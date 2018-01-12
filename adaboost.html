@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AdaBoost - Kevin Ghorbani Personal Page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body style="background-color:whitesmoke;">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+                            
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Personal Page</strong> of Kevin Ghorbani</a>
+									<ul class="icons">
+                                        <li><a href="https://www.linkedin.com/in/kevin-ghorbani-60b33212a/" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+										<li><a href="https://twitter.com/kevghor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/Kevin3727" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://github.com/Kevin3727/" class="icon fa-github"><span class="label">Snapchat</span></a></li>
+										<li><a href="https://www.instagram.com/kevinghor/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+									</ul>
+								</header>
+                            <br>
+                            <h1>AdaBoost</h1>
+                            <hr class="major" />
+                            
+                            <p>AdaBoost is short for “Adaptive Boosting” which was first introduced by Robert Schapire and Yoav Freund in 1996. In order to have a strong classifier, an ensemble of weak classifiers (or weak learners) are used. These are typically very simple base classifiers such as a decision tree stump and are slightly better than random guessing. Classifier learns from its mistakes as it iterates through weak learners .</p>
+                            <p>n the original boosting method classifiers train on samples form the training sample (without replacement) to train a classifier. These samples (with the exception of first sample) also include half of themisclassified events from the previous classifier. There also need to be a classifier from a sample which previous classifiers disagree. At the end, a majority vote of these weak classifiers create a strong classifier.</p>
+                            <p>In contrast with the original boosting, in AdaBoost each sample will be trained with replacement. In each round, classifier learns from its previous mistake by reweighting the data. Misclassified events will be given a hight weight for the next round. Code below is an example of how AdaBoost’s taring and weighting works.</p>
+                            <pre>
+                            <code>
+def AdaBoost(data, y, weights=[], n_estimator, training_method=DecisionTree(depth=1)):
+                                
+# Define equal weights if not pre-defined
+    if weights is not []:
+        weights = numpy.ones(len(data))
+    
+    # Normalize weights
+    weights /= sum(weights)
+    
+    for i in range(n_estimator):
+        # Train classifier
+        clf[i] = train(training_method, data, y, weights)
+        
+        # Predict y_pred
+        y_pred = predict(clf, data)
+        
+        # Calculate error rate
+        error = numpy.dot(weights, (y == y_pred))
+        
+        # Calculate coefficient
+        alpha[i] = numpy.log10(1. - error / error) / 2.
+        
+        # Update and normalize weights
+        weights = numpy.cross(weights, numpy.exp(-1 *
+		          numpy.numpy(numpy.cross(alpha[i], y_pred), y)))
+        weights /= sum(weights)
+                            </code>
+                            </pre>
+                            <p>After training “decision function” can be calculated like this:</p>
+                            <img src="http://latex.codecogs.com/gif.latex?decision\_function = \sum_{i=1}^{n_{estimator}} \alpha_i \times predict(clf_i, data)" border="0"/>
+                            <p>Normally predicted value is 1 when decision function is positive and 0 when negative i.e. splitting decision function on zero; But to get a better purity in one side we my change the threshold to a non zero value. This method is useful in our selection since we only need to select neutrino from our sample and not muons (see <a href="EventSelection.html">Event Selection</a>).</p>
+                            
+                            <center><img src="images/adaboost_draw.png" alt="adaboost draw" width="500"/>
+                            <div>This plot shows a step-by-step AdaBoost training.</div>
+                            </center>
+                            <br>
+                            <p>Figure above shows a step-by-step process in a simple AdaBoost training with only 2 variables. At each step, misclassified events with that classifier will get a bigger weight (larger circles). At the end a combination of all the weak classifiers will make the final classifier which is a tree. Each branch of the tree (areas in the final plot) will be assigned a specific decision function, and multiple events will be assigned the same decision function. It is important to note that branches do not have the same size, this explains that why histogram of decision functions can have peaks and fluctuations. These fluctuations can go away if there are large number of branched or in another word there are no thick branches in the classifier; However, this may result in overfitting of the sample.</p>
+                            
+                            <h4>References</h4>
+                            <p>[1] Yoav Freund and Robert E Schapire. A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting. Journal of Computer and System Sciences, 55(1):119 – 139, 1997. URL: <a href="http://www.sciencedirect.com/science/article/pii/S002200009791504X, doi:http://dx.doi.org/10.1006/jcss.1997.1504">http://www.sciencedirect.com/science/article/pii/S002200009791504X, doi:http://dx.doi.org/10.1006/jcss.1997.1504</a></p>
+                            <p>[2] Sebastian Raschka. Python Machine Learning. Packt Publishing, Birmingham, UK, 2015.</p>
+
+                            <hr class="major" />
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+                                        <li><a href="CV.html">Curriculum vitae</a></li>
+                                        <li><a href="adaboost.html">AdaBoost</a></li>
+										<li><a href="EventSelection.html">Event Selection</a></li>
+                                        <li><a href="EnergyReconstruction.html">Energy Reconstruction</a></li>
+										<li><a href="StartingVeto.html">Starting Track Veto</a></li>
+                                        <li><a href="Sensitivity.html">Sterile Neutrino Sensitivity</a></li>
+										<li>
+											<span class="opener">Other Projects</span>
+											<ul>
+												<li><a href="chicago.html">Chicago Crime Analysis</a></li>
+												<li><a href="polling.html">Polling Module</a></li>
+												<li><a href="eclipsetimer.html">Eclipse Timer</a></li>
+												<li><a href="Presidential.html">2016 Presidential Election</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<ul class="contact">
+										<li class="fa-envelope-o"><a href="#">kevin at icecube dot wisc dot edu</a></li>
+										<li class="fa-home">222 W Washington Ave Ste 500<br />
+										Madison, WI 53703</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2017 Kevin Ghorbani. All rights reserved.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
